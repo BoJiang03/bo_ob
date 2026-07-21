@@ -48,9 +48,10 @@ wait_http() { # url timeout_s pidfile
     return 1
 }
 
-gpu_mem_warn() { # threshold_mib message   ($GPU may be a comma list; checks the busiest one)
-    local used
-    used=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits -i "$GPU" 2>/dev/null \
+gpu_mem_warn() { # threshold_mib message   ($GPU may be a comma list or "all"; checks the busiest one)
+    local used sel=()
+    [[ $GPU != all ]] && sel=(-i "$GPU")
+    used=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits "${sel[@]}" 2>/dev/null \
            | sort -n | tail -1) || return 0
     [[ -n $used ]] || return 0
     if (( used > $1 )); then
@@ -59,7 +60,9 @@ gpu_mem_warn() { # threshold_mib message   ($GPU may be a comma list; checks the
 }
 
 show_gpu() {
-    nvidia-smi --query-gpu=index,memory.used,memory.total --format=csv,noheader -i "$GPU" 2>/dev/null \
+    local sel=()
+    [[ $GPU != all ]] && sel=(-i "$GPU")
+    nvidia-smi --query-gpu=index,memory.used,memory.total --format=csv,noheader "${sel[@]}" 2>/dev/null \
         | sed 's/^/GPU /'
 }
 
@@ -121,19 +124,27 @@ model_start() {
         echo "ERROR: model path $MODEL_PATH does not exist" >&2
         return 1
     fi
-    ensure_server || return 1
+    local kv_args=()
+    if [[ ${NO_LMCACHE:-0} == 1 ]]; then
+        echo "$MODEL_NAME: NO_LMCACHE=1 — baseline mode, running WITHOUT LMCache"
+    else
+        ensure_server || return 1
+        kv_args=(--kv-transfer-config "{\"kv_connector\":\"LMCacheMPConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"lmcache.mp.host\":\"tcp://localhost\",\"lmcache.mp.port\":$LMCACHE_PORT}}")
+    fi
     if port_open "$VLLM_PORT"; then
         echo "ERROR: port $VLLM_PORT already in use by another process — not starting" >&2
         return 1
     fi
     gpu_mem_warn 55000 "vLLM (mem-util $GPU_MEM_UTIL) may OOM on top of it"
-    echo "$MODEL_NAME: starting vLLM on port $VLLM_PORT (GPU $GPU, mem-util $GPU_MEM_UTIL), bound to lmcache on port $LMCACHE_PORT..."
+    echo "$MODEL_NAME: starting vLLM on port $VLLM_PORT (GPU $GPU, mem-util $GPU_MEM_UTIL)${kv_args:+, bound to lmcache on port $LMCACHE_PORT}..."
     # VLLM_SERVER_DEV_MODE=1 enables POST /reset_prefix_cache (needed for cache benchmarks)
+    # both names accepted by the API: the short name for humans, the path for
+    # `lmcache bench engine` (the MP server registers models under their path)
     VLLM_SERVER_DEV_MODE=1 setsid nohup vllm serve "$MODEL_PATH" \
-        --served-model-name "$MODEL_NAME" --port "$VLLM_PORT" \
+        --served-model-name "$MODEL_NAME" "$MODEL_PATH" --port "$VLLM_PORT" \
         --gpu-memory-utilization "$GPU_MEM_UTIL" \
         "${EXTRA_VLLM_ARGS[@]}" \
-        --kv-transfer-config "{\"kv_connector\":\"LMCacheMPConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"lmcache.mp.host\":\"tcp://localhost\",\"lmcache.mp.port\":$LMCACHE_PORT}}" \
+        "${kv_args[@]}" \
         > "$LOGFILE" 2>&1 < /dev/null &
     echo $! > "$PIDFILE"
     echo "$MODEL_NAME: waiting for http://localhost:$VLLM_PORT/v1/models (up to ${VLLM_START_TIMEOUT}s)..."

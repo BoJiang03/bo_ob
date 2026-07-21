@@ -3,9 +3,9 @@
 # MLA latents + sparse-attention indexers) bound to the shared LMCache server,
 # per https://docs.lmcache.ai/recipes/deepseek_v4_flash.html
 #
-# *** UNTESTED ON THIS NODE ***  It needs all 8 GPUs (TP=8) — currently used by others —
-# and the weights are not in /dev/shm/models; the default MODEL_PATH is the HF id, which
-# would download hundreds of GB on first start. Faithful to the recipe; validate first.
+# *** UNTESTED ON THIS NODE ***  Faithful to the recipe; validate first.
+# Weights are fp8, ~148 GiB (local copy under /data1/bo/models). The recipe's reference
+# setup is TP=8; on a partially free node TP_SIZE=2 fits (74 GiB weights + KV per GPU).
 #
 # Recipe requirements baked in below:
 #   --kv-cache-dtype fp8_ds_mla / --tokenizer-mode deepseek_v4   mandatory for this model
@@ -32,7 +32,7 @@ GPU=${VLLM_GPU:-${USER_GPU:-0,1,2,3,4,5,6,7}}   # TP=8 needs the whole node by d
 export CUDA_VISIBLE_DEVICES=$GPU
 
 MODEL_NAME=$(basename "${BASH_SOURCE[0]}" .sh)
-MODEL_PATH=${MODEL_PATH:-deepseek-ai/$MODEL_NAME}   # HF id — set MODEL_PATH to local weights
+MODEL_PATH=${MODEL_PATH:-/data1/bo/models/$MODEL_NAME}
 VLLM_PORT=${VLLM_PORT:-8000}
 TP_SIZE=${TP_SIZE:-8}
 GPU_MEM_UTIL=${GPU_MEM_UTIL:-0.9}
