@@ -1,0 +1,115 @@
+[32;20m[2026-07-21 17:05:12,989] LMCache INFO:[0m  torch_dev=<module 'torch.cuda' from '/home/bo/lmcache/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py'>, torch_device_type=cuda [3m(__init__.py:63:lmcache)[0m
+[32;20m[2026-07-21 17:05:13,056] LMCache INFO:[0m CudaPinMemoryBackend: using torch cudart [3m(pin_memory.py:89:lmcache.v1.platform.cuda.pin_memory)[0m
+[32;20m[2026-07-21 17:05:13,189] LMCache INFO:[0m Skipping backend lmcache.v1.platform.musa.ops: predicate returned False [3m(__init__.py:114:lmcache)[0m
+[32;20m[2026-07-21 17:05:13,190] LMCache INFO:[0m Skipping backend lmcache.xpu_ops: predicate returned False [3m(__init__.py:114:lmcache)[0m
+[32;20m[2026-07-21 17:05:13,192] LMCache INFO:[0m Using backend: lmcache.c_ops [3m(__init__.py:132:lmcache)[0m
+[32;20m[2026-07-21 17:05:13,724] LMCache INFO:[0m multi_layer_block_kv_transfer mode: ptr [3m(base.py:94:lmcache.v1.multiprocess.transfer_context.base)[0m
+[32;20m[2026-07-21 17:05:14,674] LMCache INFO:[0m Created FS native L2 adapter: /data1/bo/l2bench/fs_native (workers=4, odirect=False, read_ahead=None) [3m(fs_native_l2_adapter.py:154:lmcache.v1.distributed.l2_adapters.fs_native_l2_adapter)[0m
+[32;20m[2026-07-21 17:05:14,756] LMCache INFO:[0m Results saved to /home/bo/onbording/l2_support/bench-results/l2-adapters/20260721-170504/fs_native.json [3m(metrics.py:150:lmcache.cli.metrics.metrics)[0m
+
+[Init] Creating adapter...
+[Init] Adapter created successfully (NativeConnectorL2Adapter).
+
+[Store] Running 2 warmup + 5 measurement rounds...
+  [Store] Round 1: 4.28 ms, success_keys=128/128
+  [Store] Round 2: 2.63 ms, success_keys=128/128
+  [Store] Round 3: 2.70 ms, success_keys=128/128
+  [Store] Round 4: 2.92 ms, success_keys=128/128
+  [Store] Round 5: 3.17 ms, success_keys=128/128
+  [Store] Round 6: 3.34 ms, success_keys=128/128
+  [Store] Round 7: 3.27 ms, success_keys=128/128
+
+[Lookup] Running 2 warmup + 5 measurement rounds...
+bench_lookup uses a placeholder MemoryLayoutDesc; this may need a real layout for layout-sensitive adapters
+  [Lookup] Round 1: 0.32 ms, found=128/128
+  [Lookup] Round 2: 0.28 ms, found=128/128
+  [Lookup] Round 3: 0.23 ms, found=128/128
+  [Lookup] Round 4: 0.24 ms, found=128/128
+  [Lookup] Round 5: 0.23 ms, found=128/128
+  [Lookup] Round 6: 0.25 ms, found=128/128
+  [Lookup] Round 7: 0.22 ms, found=128/128
+
+[Load] Running 2 warmup + 5 measurement rounds...
+  [Load] Round 1: 1.39 ms, loaded=128/128
+  [Load] Round 2: 1.27 ms, loaded=128/128
+  [Load] Round 3: 1.28 ms, loaded=128/128
+  [Load] Round 4: 1.22 ms, loaded=128/128
+  [Load] Round 5: 1.23 ms, loaded=128/128
+  [Load] Round 6: 1.22 ms, loaded=128/128
+  [Load] Round 7: 1.23 ms, loaded=128/128
+
+{
+  "title": "L2 Adapter Benchmark Result",
+  "metrics": {
+    "config": {
+      "l2_adapter_json": "{\"type\":\"fs_native\",\"base_path\":\"/data1/bo/l2bench/fs_native\",\"num_workers\":4}",
+      "num_keys": 32,
+      "in_flight": 4,
+      "keys_per_round": 128,
+      "data_size_kb": 256,
+      "data_per_round_mb": 32.0,
+      "measurement_rounds": 5,
+      "warmup_rounds": 2,
+      "lookup_max_hit_rate": 1.0
+    },
+    "op_0": {
+      "operation": "Store",
+      "rounds": 5,
+      "keys_per_round": 128,
+      "total_keys": 640,
+      "total_success": 640,
+      "duration_avg_ms": 3.08,
+      "duration_min_ms": 2.7,
+      "duration_max_ms": 3.34,
+      "duration_p50_ms": 3.17,
+      "duration_p99_ms": 3.34,
+      "duration_std_ms": 0.27,
+      "throughput_avg_mbps": 10450.27,
+      "throughput_min_mbps": 9568.0,
+      "throughput_max_mbps": 11833.98,
+      "ops_per_sec_avg": 41801.08,
+      "latency_per_key_ms": 0.024
+    },
+    "op_1": {
+      "operation": "Lookup",
+      "rounds": 5,
+      "keys_per_round": 128,
+      "total_keys": 640,
+      "total_success": 640,
+      "duration_avg_ms": 0.24,
+      "duration_min_ms": 0.22,
+      "duration_max_ms": 0.25,
+      "duration_p50_ms": 0.23,
+      "duration_p99_ms": 0.25,
+      "duration_std_ms": 0.01,
+      "throughput_avg_mbps": 0.0,
+      "throughput_min_mbps": 0.0,
+      "throughput_max_mbps": 0.0,
+      "ops_per_sec_avg": 542235.14,
+      "latency_per_key_ms": 0.002,
+      "expected_max_hit_rate": 1.0,
+      "expected_hit_count": 457,
+      "actual_hit_rate": 1.0
+    },
+    "op_2": {
+      "operation": "Load",
+      "rounds": 5,
+      "keys_per_round": 128,
+      "total_keys": 640,
+      "total_success": 640,
+      "duration_avg_ms": 1.24,
+      "duration_min_ms": 1.22,
+      "duration_max_ms": 1.28,
+      "duration_p50_ms": 1.23,
+      "duration_p99_ms": 1.28,
+      "duration_std_ms": 0.02,
+      "throughput_avg_mbps": 25883.46,
+      "throughput_min_mbps": 25030.22,
+      "throughput_max_mbps": 26266.66,
+      "ops_per_sec_avg": 103533.85,
+      "latency_per_key_ms": 0.01
+    }
+  }
+}
+[Cleanup] Closing adapter...
+[Cleanup] Done.

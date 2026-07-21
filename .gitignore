@@ -1,3 +1,5 @@
 setup/logs/
 setup/run/
 setup/bench-results/
+l2_support/logs/
+l2_support/run/

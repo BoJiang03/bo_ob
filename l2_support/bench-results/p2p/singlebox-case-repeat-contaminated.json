@@ -1,0 +1,22 @@
+{
+  "prefix_tokens": 20000,
+  "shared_P2P_ttft_ms": {
+    "mean": 395.9,
+    "min": 348.2,
+    "all": [
+      488.8,
+      350.6,
+      348.2
+    ]
+  },
+  "cold_recompute_ttft_ms": {
+    "mean": 480.8,
+    "min": 63.7,
+    "all": [
+      1306.0,
+      72.7,
+      63.7
+    ]
+  },
+  "p2p_speedup": 1.21
+}

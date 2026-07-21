@@ -1,0 +1,27 @@
+{
+  "label": "no-l2",
+  "num_docs": 8,
+  "doc_tokens": 20000,
+  "total_prompt_tokens": 160112,
+  "reset": true,
+  "populate_seconds": 12.4,
+  "ttft_ms": {
+    "mean": 2029.3,
+    "median": 2037.5,
+    "p50": 2037.5,
+    "p90": 2633.3,
+    "p99": 2663.4,
+    "min": 1507.4,
+    "max": 2666.8
+  },
+  "ttft_ms_per_doc": [
+    2618.9,
+    2666.8,
+    2111.7,
+    1507.4,
+    1963.3,
+    2228.6,
+    1527.5,
+    1610.2
+  ]
+}

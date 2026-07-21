@@ -1,0 +1,14 @@
+
+=== L2 gain (post-reset re-read TTFT): 20260721-180142-Qwen3-8B-l2gain-scenario
+working set: 16 docs x 6500 tok = 104230 prompt tokens; reset=True
+
+TTFT metric           WITH L2      L1-only  L2 speedup
+------------------------------------------------------
+mean                  315.4ms      292.1ms       0.93x
+median                344.4ms      315.0ms       0.91x
+p50                   344.4ms      315.0ms       0.91x
+p90                   346.4ms      316.9ms       0.91x
+p99                   347.3ms      320.1ms       0.92x
+max                   347.4ms      320.5ms       0.92x
+
+(higher speedup = L2 avoided more recompute; L1-only recomputes the L1-overflow)

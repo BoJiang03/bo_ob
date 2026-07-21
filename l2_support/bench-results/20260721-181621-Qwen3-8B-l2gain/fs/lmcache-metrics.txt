@@ -1,0 +1,375 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 8623.0
+python_gc_objects_collected_total{generation="1"} 1324.0
+python_gc_objects_collected_total{generation="2"} 237.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 1032.0
+python_gc_collections_total{generation="1"} 93.0
+python_gc_collections_total{generation="2"} 7.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="3",version="3.12.3"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 8.7067635712e+010
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 5.241909248e+09
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.78465785623e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 17.56
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 145.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP target_info Target metadata
+# TYPE target_info gauge
+target_info{service_instance_id="0c41adf5-c6ee-4102-9d96-0fedc2212696",service_name="unknown_service",telemetry_sdk_language="python",telemetry_sdk_name="opentelemetry",telemetry_sdk_version="1.40.0"} 1.0
+# HELP lmcache_mp_l1_eviction_loop_ticks_total L1 eviction-loop iterations (every cycle)
+# TYPE lmcache_mp_l1_eviction_loop_ticks_total counter
+lmcache_mp_l1_eviction_loop_ticks_total 67.0
+# HELP lmcache_mp_l1_write_chunks_total Total chunks written to L1
+# TYPE lmcache_mp_l1_write_chunks_total counter
+lmcache_mp_l1_write_chunks_total 6522.0
+# HELP lmcache_mp_l1_eviction_loop_triggered_total L1 eviction-loop iterations where the policy ran
+# TYPE lmcache_mp_l1_eviction_loop_triggered_total counter
+lmcache_mp_l1_eviction_loop_triggered_total 20.0
+# HELP lmcache_mp_l1_read_chunks_total Total chunks read from L1
+# TYPE lmcache_mp_l1_read_chunks_total counter
+lmcache_mp_l1_read_chunks_total 6522.0
+# HELP lmcache_mp_l1_chunk_reuse_gap_seconds Histogram of time gaps between consecutive touches (write or read) of the same L1 chunk (seconds).
+# TYPE lmcache_mp_l1_chunk_reuse_gap_seconds histogram
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="0.0"} 0.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="5.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="10.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="25.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="50.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="75.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="100.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="250.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="500.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="750.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="1000.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="2500.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="5000.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="7500.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="10000.0"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_bucket{le="+Inf"} 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_count 60.0
+lmcache_mp_l1_chunk_reuse_gap_seconds_sum 17.60633635520935
+# HELP lmcache_mp_l1_evicted_chunks_total Total chunks evicted from L1
+# TYPE lmcache_mp_l1_evicted_chunks_total counter
+lmcache_mp_l1_evicted_chunks_total 5416.0
+# HELP lmcache_mp_l1_chunk_lifetime_seconds Histogram of L1 chunk lifetime from allocation to eviction (seconds).
+# TYPE lmcache_mp_l1_chunk_lifetime_seconds histogram
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="0.0"} 0.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="5.0"} 9.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="10.0"} 40.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="25.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="50.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="75.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="100.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="250.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="500.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="750.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="1000.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="2500.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="5000.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="7500.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="10000.0"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_bucket{le="+Inf"} 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_count 49.0
+lmcache_mp_l1_chunk_lifetime_seconds_sum 357.3550581932068
+# HELP lmcache_mp_l1_chunk_idle_before_evict_seconds Histogram of idle time before L1 chunk eviction (seconds).
+# TYPE lmcache_mp_l1_chunk_idle_before_evict_seconds histogram
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="0.0"} 0.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="5.0"} 9.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="10.0"} 40.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="25.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="50.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="75.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="100.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="250.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="500.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="750.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="1000.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="2500.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="5000.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="7500.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="10000.0"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_bucket{le="+Inf"} 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_count 49.0
+lmcache_mp_l1_chunk_idle_before_evict_seconds_sum 342.1197941303253
+# HELP lmcache_mp_l1_chunk_evict_reuse_gap_seconds Histogram of time from L1 chunk eviction to next reuse.  Capped at max_evict_reuse_wait.
+# TYPE lmcache_mp_l1_chunk_evict_reuse_gap_seconds histogram
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="0.0"} 0.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="5.0"} 0.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="10.0"} 9.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="25.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="50.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="75.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="100.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="250.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="500.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="750.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="1000.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="2500.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="5000.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="7500.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="10000.0"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_bucket{le="+Inf"} 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_count 21.0
+lmcache_mp_l1_chunk_evict_reuse_gap_seconds_sum 228.28207564353943
+# HELP lmcache_mp_l2_prefetch_lookup_requests_total Total L2 prefetch lookup requests submitted
+# TYPE lmcache_mp_l2_prefetch_lookup_requests_total counter
+lmcache_mp_l2_prefetch_lookup_requests_total 16.0
+# HELP lmcache_mp_l2_prefetch_lookup_objects_chunks_total Total chunks submitted for L2 prefetch lookup
+# TYPE lmcache_mp_l2_prefetch_lookup_objects_chunks_total counter
+lmcache_mp_l2_prefetch_lookup_objects_chunks_total 20000.0
+# HELP lmcache_mp_l2_prefetch_hit_chunks_total Total prefix chunks found in L2 lookup
+# TYPE lmcache_mp_l2_prefetch_hit_chunks_total counter
+lmcache_mp_l2_prefetch_hit_chunks_total 512.0
+# HELP lmcache_mp_l2_store_submitted_requests_total Total L2 store requests submitted
+# TYPE lmcache_mp_l2_store_submitted_requests_total counter
+lmcache_mp_l2_store_submitted_requests_total 19.0
+# HELP lmcache_mp_l2_store_submitted_objects_chunks_total Total chunks submitted for L2 store
+# TYPE lmcache_mp_l2_store_submitted_objects_chunks_total counter
+lmcache_mp_l2_store_submitted_objects_chunks_total 6010.0
+# HELP lmcache_mp_l2_store_completed_requests_total Total L2 store requests completed
+# TYPE lmcache_mp_l2_store_completed_requests_total counter
+lmcache_mp_l2_store_completed_requests_total{l2_name="fs"} 19.0
+# HELP lmcache_mp_l2_store_completed_objects_chunks_total Total chunks successfully stored to L2
+# TYPE lmcache_mp_l2_store_completed_objects_chunks_total counter
+lmcache_mp_l2_store_completed_objects_chunks_total 6010.0
+# HELP lmcache_mp_l2_prefetch_load_submitted_requests_total Total L2 prefetch load requests submitted (per-adapter)
+# TYPE lmcache_mp_l2_prefetch_load_submitted_requests_total counter
+lmcache_mp_l2_prefetch_load_submitted_requests_total 1.0
+# HELP lmcache_mp_l2_prefetch_load_submitted_objects_chunks_total Total chunks submitted for L2 load
+# TYPE lmcache_mp_l2_prefetch_load_submitted_objects_chunks_total counter
+lmcache_mp_l2_prefetch_load_submitted_objects_chunks_total 512.0
+# HELP lmcache_mp_l2_load_completed_requests_total Total L2 load tasks completed (per-adapter)
+# TYPE lmcache_mp_l2_load_completed_requests_total counter
+lmcache_mp_l2_load_completed_requests_total{l2_name="fs"} 1.0
+# HELP lmcache_mp_l2_prefetch_load_completed_chunks_total Total chunks successfully loaded from L2
+# TYPE lmcache_mp_l2_prefetch_load_completed_chunks_total counter
+lmcache_mp_l2_prefetch_load_completed_chunks_total 512.0
+# HELP lmcache_mp_l2_usage_bytes Bytes currently held in each L2 adapter, tagged by ``l2_name`` (one observation per adapter).
+# TYPE lmcache_mp_l2_usage_bytes gauge
+lmcache_mp_l2_usage_bytes{l2_name="fs"} 0.0
+# HELP lmcache_mp_lookup_requested_tokens_total Total tokens submitted for lookup (denominator of the L1+L2 token-level hit rate). Only chunk-aligned tokens are counted.
+# TYPE lmcache_mp_lookup_requested_tokens_total counter
+lmcache_mp_lookup_requested_tokens_total{cache_salt="",model_name="/dev/shm/models/Qwen3-8B"} 320000.0
+# HELP lmcache_mp_lookup_hit_tokens_total Total tokens found in L1+L2 during lookup (numerator of the L1+L2 token-level hit rate). Counts the contiguous prefix hit only.
+# TYPE lmcache_mp_lookup_hit_tokens_total counter
+lmcache_mp_lookup_hit_tokens_total{cache_salt="",model_name="/dev/shm/models/Qwen3-8B"} 8192.0
+# HELP lmcache_mp_l0_l1_store_throughput_GB_per_second Histogram of L0→L1 (GPU→CPU) store throughput in GB/s, measured per request as total_bytes / (end_ts - start_ts) on the GPU cupy stream.
+# TYPE lmcache_mp_l0_l1_store_throughput_GB_per_second histogram
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="0.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="5.0",model_name="/dev/shm/models/Qwen3-8B"} 8.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="10.0",model_name="/dev/shm/models/Qwen3-8B"} 14.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="25.0",model_name="/dev/shm/models/Qwen3-8B"} 14.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="50.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="75.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="100.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="250.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="500.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="750.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="1000.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="2500.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="5000.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="7500.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="10000.0",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="+Inf",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_count{device="cuda:7",engine_id="2130023741597453067",model_name="/dev/shm/models/Qwen3-8B"} 19.0
+lmcache_mp_l0_l1_store_throughput_GB_per_second_sum{device="cuda:7",engine_id="2130023741597453067",model_name="/dev/shm/models/Qwen3-8B"} 243.01240379472029
+# HELP lmcache_mp_l2_store_throughput_GB_per_second Histogram of L1->L2 store throughput in GB/s, measured per task as total_bytes / (completed_ts - submitted_ts).  Spans adapter queue + network/disk I/O, so this is end-to-end latency-based throughput.
+# TYPE lmcache_mp_l2_store_throughput_GB_per_second histogram
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="0.0"} 0.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="5.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="10.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="25.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="50.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="75.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="100.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="250.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="500.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="750.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="1000.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="2500.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="5000.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="7500.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="10000.0"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_bucket{l2_name="fs",le="+Inf"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_count{l2_name="fs"} 13.0
+lmcache_mp_l2_store_throughput_GB_per_second_sum{l2_name="fs"} 31.721586211088148
+# HELP lmcache_mp_l2_load_throughput_GB_per_second Histogram of L2->L1 load throughput in GB/s, measured per (request, adapter) pair as total_bytes / (completed_ts - submitted_ts).  Spans adapter queue + network/disk I/O.
+# TYPE lmcache_mp_l2_load_throughput_GB_per_second histogram
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="0.0"} 0.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="5.0"} 0.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="10.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="25.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="50.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="75.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="100.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="250.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="500.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="750.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="1000.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="2500.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="5000.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="7500.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="10000.0"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_bucket{l2_name="fs",le="+Inf"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_count{l2_name="fs"} 1.0
+lmcache_mp_l2_load_throughput_GB_per_second_sum{l2_name="fs"} 5.186280041837672
+# HELP lmcache_mp_l0_l1_load_throughput_GB_per_second Histogram of L1→L0 (CPU→GPU) load throughput in GB/s, measured per request as total_bytes / (end_ts - start_ts) on the GPU cupy stream.
+# TYPE lmcache_mp_l0_l1_load_throughput_GB_per_second histogram
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="0.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="5.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="10.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="25.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="50.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="75.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="100.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="250.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="500.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="750.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="1000.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="2500.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="5000.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="7500.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="10000.0",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_bucket{device="cuda:7",engine_id="2130023741597453067",le="+Inf",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_count{device="cuda:7",engine_id="2130023741597453067",model_name="/dev/shm/models/Qwen3-8B"} 1.0
+lmcache_mp_l0_l1_load_throughput_GB_per_second_sum{device="cuda:7",engine_id="2130023741597453067",model_name="/dev/shm/models/Qwen3-8B"} 4.092455207412961
+# HELP lmcache_mp_l1_allocation_failure_chunks_total Count of L1 memory allocation failures (OOM) during reserve_write. Tagged by ``during`` = l1_store | l2_prefetch and ``model_name``.
+# TYPE lmcache_mp_l1_allocation_failure_chunks_total counter
+lmcache_mp_l1_allocation_failure_chunks_total{during="l1_store",model_name="/dev/shm/models/Qwen3-8B"} 13252.0
+lmcache_mp_l1_allocation_failure_chunks_total{during="l2_prefetch",model_name="/dev/shm/models/Qwen3-8B"} 1762.0
+# HELP lmcache_mp_l2_prefetch_failure_chunks_total Count of keys that were expected in L2 but failed to load into L1. Tagged by ``reason`` = l1_oom | not_found and ``model_name``.
+# TYPE lmcache_mp_l2_prefetch_failure_chunks_total counter
+lmcache_mp_l2_prefetch_failure_chunks_total{model_name="/dev/shm/models/Qwen3-8B",reason="l1_oom"} 1762.0
+# HELP lmcache_mp_l0_block_lifetime_seconds Histogram of GPU KV cache block lifetime from allocation to eviction (seconds).
+# TYPE lmcache_mp_l0_block_lifetime_seconds histogram
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="0.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="5.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="10.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="25.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="50.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="75.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="100.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="250.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="500.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="750.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="1000.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="2500.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="5000.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="7500.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="10000.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_bucket{instance_id="1191409",le="+Inf",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_count{instance_id="1191409",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_lifetime_seconds_sum{instance_id="1191409",model_name="/dev/shm/models/Qwen3-8B"} 1961.7427322864532
+# HELP lmcache_mp_l0_block_idle_before_evict_seconds Histogram of idle time before GPU KV cache block eviction (seconds).
+# TYPE lmcache_mp_l0_block_idle_before_evict_seconds histogram
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="0.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="5.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="10.0",model_name="/dev/shm/models/Qwen3-8B"} 0.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="25.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="50.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="75.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="100.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="250.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="500.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="750.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="1000.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="2500.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="5000.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="7500.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="10000.0",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_bucket{instance_id="1191409",le="+Inf",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_count{instance_id="1191409",model_name="/dev/shm/models/Qwen3-8B"} 92.0
+lmcache_mp_l0_block_idle_before_evict_seconds_sum{instance_id="1191409",model_name="/dev/shm/models/Qwen3-8B"} 1961.7427322864532
+# HELP lmcache_mp_real_reuse_gap_seconds Gap between a chunk's last access (read or write) and next read.  Storage cost.  Tagged with cache_salt.
+# TYPE lmcache_mp_real_reuse_gap_seconds histogram
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="0.0"} 0.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="5.0"} 0.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="10.0"} 0.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="25.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="50.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="75.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="100.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="250.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="500.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="750.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="1000.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="2500.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="5000.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="7500.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="10000.0"} 3.0
+lmcache_mp_real_reuse_gap_seconds_bucket{cache_salt="",le="+Inf"} 3.0
+lmcache_mp_real_reuse_gap_seconds_count{cache_salt=""} 3.0
+lmcache_mp_real_reuse_gap_seconds_sum{cache_salt=""} 54.92263984680176
+# HELP lmcache_mp_real_reuse_gap_objects Per-cache_salt access-counter gap between two reads of the same chunk.  Storage volume.  Tagged with cache_salt.
+# TYPE lmcache_mp_real_reuse_gap_objects histogram
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="0.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="5.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="10.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="25.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="50.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="75.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="100.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="250.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="500.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="750.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="1000.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="2500.0"} 0.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="5000.0"} 3.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="7500.0"} 3.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="10000.0"} 3.0
+lmcache_mp_real_reuse_gap_objects_bucket{cache_salt="",le="+Inf"} 3.0
+lmcache_mp_real_reuse_gap_objects_count{cache_salt=""} 3.0
+lmcache_mp_real_reuse_gap_objects_sum{cache_salt=""} 7818.0
+# HELP lmcache_mp_num_chunks_loaded_total Total number of LMCache chunks loaded into the engine (summed across all retrieve operations).
+# TYPE lmcache_mp_num_chunks_loaded_total counter
+lmcache_mp_num_chunks_loaded_total{cache_salt="",model_name="/dev/shm/models/Qwen3-8B",worker_id="2130023741597453067"} 512.0
+# HELP lmcache_mp_event_bus_queue_depth Events currently queued in the EventBus.
+# TYPE lmcache_mp_event_bus_queue_depth gauge
+lmcache_mp_event_bus_queue_depth 0.0
+# HELP lmcache_mp_event_bus_drain_lag_seconds Seconds since the oldest queued event was published; 0.0 when empty.  Rising values mean the drain thread is falling behind.
+# TYPE lmcache_mp_event_bus_drain_lag_seconds gauge
+lmcache_mp_event_bus_drain_lag_seconds 0.0
+# HELP lmcache_mp_event_bus_dropped_events_total Cumulative events dropped because the EventBus queue was at max_queue_size.
+# TYPE lmcache_mp_event_bus_dropped_events_total counter
+lmcache_mp_event_bus_dropped_events_total 0.0
+# HELP lmcache_mp_l1_memory_usage_bytes Bytes currently held in L1 cache
+# TYPE lmcache_mp_l1_memory_usage_bytes gauge
+lmcache_mp_l1_memory_usage_bytes 3.142582272e+09
+# HELP lmcache_mp_l1_usage_ratio L1 used/total ratio (0.0–1.0)
+# TYPE lmcache_mp_l1_usage_ratio gauge
+lmcache_mp_l1_usage_ratio 0.731689453125
+# HELP lmcache_mp_l2_adapters Count of L2 adapters attached to the store controller, tagged by ``state`` (active or draining).
+# TYPE lmcache_mp_l2_adapters gauge
+lmcache_mp_l2_adapters{state="active"} 1.0
+lmcache_mp_l2_adapters{state="draining"} 0.0
+# HELP lmcache_mp_l2_adapters Count of L2 adapters attached to the prefetch controller, tagged by ``state`` (active or draining).
+# TYPE lmcache_mp_l2_adapters gauge
+lmcache_mp_l2_adapters{state="active"} 1.0
+lmcache_mp_l2_adapters{state="draining"} 0.0
+# HELP lmcache_mp_active_prefetch_jobs Number of active prefetch jobs
+# TYPE lmcache_mp_active_prefetch_jobs gauge
+lmcache_mp_active_prefetch_jobs 0.0
+# HELP lmcache_mp_active_p2p_lookup_jobs Number of active P2P lookup jobs
+# TYPE lmcache_mp_active_p2p_lookup_jobs gauge
+lmcache_mp_active_p2p_lookup_jobs 0.0
