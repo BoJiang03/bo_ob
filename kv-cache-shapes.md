@@ -1,11 +1,13 @@
 # KV cache shapes of the four served models
 
-What the KV cache of each model in this directory actually looks like, derived from each
-model's `config.json` on disk (paths below). Explains why the per-model scripts differ in
-`NEED_CHUNK` while the `--kv-transfer-config` JSON is byte-identical for all of them: the
-connector config only says *which server to dial*; the shape/layout is handed to the server
-automatically at worker startup via `REGISTER_KV_CACHE` (see
-`code_structure/request_lifecycle.md`, "Registration prerequisite").
+What the KV cache of each model served by the `setup/` recipes actually looks like, derived
+from each model's `config.json` on disk (paths below). Explains why the per-model scripts
+differ in `NEED_CHUNK` while the `--kv-transfer-config` JSON is byte-identical for all of
+them: the connector config only says *which server to dial* (see
+[vllm_connector_usage.md](vllm_connector_usage.md)); the shape/layout is handed to the
+server automatically at worker startup via `REGISTER_KV_CACHE` (see
+[code_structure/request_lifecycle.md](code_structure/request_lifecycle.md),
+"Registration prerequisite").
 
 All sizes are per **one** full copy of the cache (TP splits K/V heads across ranks for GQA;
 MLA latent handling under TP is backend-specific and not covered here).

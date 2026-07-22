@@ -199,6 +199,8 @@ measurement independently rules out ZMQ as the data path.
 
 ## See also
 
+- [vllm_connector_usage.md](vllm_connector_usage.md) — the vLLM side: how `--kv-transfer-config`
+  becomes two connector instances and which hooks fire when
 - [code_structure/overview.md](code_structure/overview.md) — the three core modules
 - [code_structure/request_lifecycle.md](code_structure/request_lifecycle.md) — the 5 phases of one request
 - [code_structure/controllers.md](code_structure/controllers.md) — Store/Prefetch controllers, L1↔L2
