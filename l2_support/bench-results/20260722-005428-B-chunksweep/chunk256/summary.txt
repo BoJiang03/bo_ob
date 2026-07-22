@@ -1,0 +1,9 @@
+
+=== L2 gain (post-reset re-read TTFT): chunk256
+working set: 8 docs x 20000 tok = 160112 prompt tokens; reset=True
+
+arm            mean TTFT    median       p90
+--------------------------------------------
+fs_native       1197.7ms  1237.0ms  1239.5ms
+
+(vs no-l2 >1 => that L2 adapter served the L1-overflow faster than recompute)

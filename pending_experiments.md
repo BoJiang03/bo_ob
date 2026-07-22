@@ -10,14 +10,16 @@ Last updated: 2026-07-22. Detailed handoff history in `records/` (gitignored, lo
 
 | # | Experiment | Cards | Time | Runnable now? | Note |
 |---|---|---|---|---|---|
-| **B** | chunk-size 16→256 / prefetch-in-flight 8→64 re-test | any **1** | ~30min | ✅ | only item with no multi-card/co-timing constraint |
+| **B** | ~~chunk-size 16→256~~ / prefetch-in-flight 8→64 re-test | any **1** | ~30min | ✅ | **chunk-size DONE 2026-07-22** (see below); only in-flight sub-item left |
 | **③** | P2P loading throughput (nsys, Part 3) | same-node **2** | ~40min | ❌ | extra prereq below |
 | **D** | DSv4-Flash with / without LMCache | rtx-1 ×2 (TP=2) | — | ❌ | highest academic value (MLA compresses KV) |
 | **A** | real 2-node P2P (Part 2 ③ closeout) | 024×1 **+** 026×1, **simultaneous** | ~40min | ❌ | single-node 1.30× likely loopback; hardest to schedule |
 | **C** | Kimi-K2.6 recipe | rtx-1 full node ×8 (TP=8) | — | ❌ | long-term |
 
-**Priority: B > ③ > D > A > C.**
-(B cheapest + runnable now; ③ annotations ready, only needs 2 cards; D high value but needs a full 2-card node; A gated by both nodes free at once; C needs a whole node.)
+**Priority: ③ > D > A > C** (B's main gap done). Optional tiny B-followup: in-flight sweep via
+`bench-l2.sh` if we want that dimension too.
+(③ annotations ready, only needs 2 cards; D high value but needs a full 2-card node; A gated by
+both nodes free at once; C needs a whole node.)
 
 ## ③ — P2P loading throughput (Part 3)
 
@@ -31,11 +33,20 @@ Last updated: 2026-07-22. Detailed handoff history in `records/` (gitignored, lo
 
 **vs A:** both are 2-card P2P. A tests real cross-node bandwidth (024+026 simultaneous); ③ only needs same-node 2 cards for load throughput — easier to land if any node frees 2 cards.
 
-## B — runnable now, do first
+## B — chunk-size DONE (2026-07-22), in-flight sub-item remains
 
-**Verify:** the one "inferred not measured" gap in Part 2 — "chunk-size=16 → 20k tokens = 1250 chunks, with in-flight 8 + 5ms heartbeat ≈ 0.78s pure polling wait" was computed from CLI defaults, never measured.
-**How:** `--chunk-size` 16→256, `--l2-prefetch-max-in-flight` 8→64, re-run `l2_support/l2-gain.sh`.
-**Why first:** 1 card, ~30min, zero cross-node — turns a known soft spot into a hard result.
+**Ran** the chunk-size half on borrowed rtx-026 GPU1 (lmcache 0.5.1), `l2-gain.sh`, L2=fs_native on
+tmpfs, 8×20k-tok, post-reset re-read TTFT. Full record:
+`records/2026/07/22/3_expB_l2_chunksize_sweep.md`.
+
+Result: no-l2 recompute 1251ms; fs_native @chunk16 1262ms (0.99×); fs_native @chunk256 1197.7ms
+(1.045×). **chunk 16→256 = −64ms (−5.1%).** The Part 2 "inferred ~0.78s pure polling wait" is
+**corrected to a measured ~64ms** end-to-end effect (polling overlaps work; direction right,
+magnitude ~10× smaller). Near-break-even regime here (tmpfs L2, 20k ctx) keeps the absolute L2 gain
+small; real-disk/longer-ctx would amplify it.
+
+**Remaining (optional):** the in-flight 8→64 dimension — lives in `bench-l2.sh` (`--in-flight`,
+an L2-adapter microbench), NOT `l2-gain.sh`. Cheap, 1 card, if we want it.
 
 ## A / C / D — details
 

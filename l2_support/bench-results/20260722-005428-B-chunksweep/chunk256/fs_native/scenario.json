@@ -1,0 +1,27 @@
+{
+  "label": "fs_native",
+  "num_docs": 8,
+  "doc_tokens": 20000,
+  "total_prompt_tokens": 160112,
+  "reset": true,
+  "populate_seconds": 9.9,
+  "ttft_ms": {
+    "mean": 1197.7,
+    "median": 1237.0,
+    "p50": 1237.0,
+    "p90": 1239.5,
+    "p99": 1240.8,
+    "min": 923.0,
+    "max": 1240.9
+  },
+  "ttft_ms_per_doc": [
+    1240.9,
+    1232.3,
+    1238.7,
+    1233.9,
+    1236.4,
+    923.0,
+    1238.9,
+    1237.7
+  ]
+}
