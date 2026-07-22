@@ -23,6 +23,9 @@ storage manager (③).**
   they interact with the L1 manager and L2 adapters via eventfd + poll. *(flow diagrams)*
 - [mp_server.md](mp_server.md) — the MP server's sub-modules (compositor + pluggable modules over
   a ZMQ queue). *(component diagram)*
+- [../control_vs_data_plane.md](../control_vs_data_plane.md) — what ZMQ carries and what it does
+  **not**: the control/data plane split, and why each storage medium moves bytes its own way.
+  *(repo root)*
 
 ## Layering
 
