@@ -15,6 +15,15 @@ One sentence: **a request enters from the serving engine (①), the MP server mo
 between GPU and CPU (②), and the multi-tier store it reads from / writes to is managed by the
 storage manager (③).**
 
+### Deeper dives
+
+- [request_lifecycle.md](request_lifecycle.md) — how a request flows through LMCache in MP mode:
+  vLLM lookup on the LMCache side, and how KV retrieve (H2D) / store (D2H) work. *(sequence diagram)*
+- [controllers.md](controllers.md) — the Store & Prefetch controllers moving data L1↔L2, and how
+  they interact with the L1 manager and L2 adapters via eventfd + poll. *(flow diagrams)*
+- [mp_server.md](mp_server.md) — the MP server's sub-modules (compositor + pluggable modules over
+  a ZMQ queue). *(component diagram)*
+
 ## Layering
 
 ```mermaid
