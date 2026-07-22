@@ -63,6 +63,12 @@ an L2-adapter microbench), NOT `l2-gain.sh`. Cheap, 1 card, if we want it.
 
 ## Loose ends
 
+- **setup/ py pilot (2026-07-22):** all 10 setup/ scripts now have a parallel `.py` port
+  (`_common.py` engine + 9 scripts; shares `run/`/`logs/`/`lmcache-server.conf` with the sh
+  family). No-GPU paths (usage/status/stop/error paths/process-group kill) verified; the
+  **GPU paths (`start`, bench, dp) are UNVERIFIED** — next GPU window, bring up Qwen3-8B once
+  via `.py` and once via `.sh` and compare. Until then **the `.sh` files stay canonical**.
+  If the pilot passes, decide whether to port `l2_support/` + `profiling/` the same way.
 - **Unpushed:** onbording (bo_ob) local is ahead of origin/main by local commits (Part 3 harness `da80511`, code_structure `2657fe9`, …). Push only on request.
 - **PR #1** open on `BoJiang03/lmcache_test` (base=dev), **not sent upstream**, awaiting review.
 - **Background watcher** `b8cmo5ynf` still watching 024 free cards (notify-only, never grabs). Single-side only → limited value for ③/A's 2-card need; disable/repoint TBD.
