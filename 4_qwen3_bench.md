@@ -102,6 +102,7 @@ Paired per-request: every slow request of the L1=20 run (850–1630 ms) landed a
 
 ## See also
 
+- [5_dp2_moe_bench.md](5_dp2_moe_bench.md) — the 2-node DP+EP MoE counterpart of these notes
 - [2_kv-cache-shapes.md](2_kv-cache-shapes.md) — where 144 KB/token / 7281 tok/GB comes from
 - [1_control_vs_data_plane.md](1_control_vs_data_plane.md) — why an L1 hit costs one CUDA-IPC H2D copy
 - `setup/bench.sh` header — KV_VOLUME semantics, NO_LMCACHE baseline arm
