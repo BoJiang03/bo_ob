@@ -23,13 +23,13 @@ storage manager (③).**
   they interact with the L1 manager and L2 adapters via eventfd + poll. *(flow diagrams)*
 - [mp_server.md](mp_server.md) — the MP server's sub-modules (compositor + pluggable modules over
   a ZMQ queue). *(component diagram)*
-- [../control_vs_data_plane.md](../control_vs_data_plane.md) — what ZMQ carries and what it does
+- [../1_control_vs_data_plane.md](../1_control_vs_data_plane.md) — what ZMQ carries and what it does
   **not**: the control/data plane split, and why each storage medium moves bytes its own way.
   *(repo root)*
-- [../vllm_connector_usage.md](../vllm_connector_usage.md) — the vLLM side of ①: how vLLM turns
+- [../3_vllm_connector_usage.md](../3_vllm_connector_usage.md) — the vLLM side of ①: how vLLM turns
   `--kv-transfer-config` into two connector instances (scheduler + worker) and which hooks it
   calls when. *(repo root)*
-- [../kv-cache-shapes.md](../kv-cache-shapes.md) — what the registered KV tensors look like for
+- [../2_kv-cache-shapes.md](../2_kv-cache-shapes.md) — what the registered KV tensors look like for
   the four served models (GQA / hybrid mamba / MLA+indexer / MLA). *(repo root)*
 
 ## Layering

@@ -23,12 +23,12 @@ leaves) is [code_structure/request_lifecycle.md](code_structure/request_lifecycl
 |---|---|
 | `kv_connector` | Name looked up in `KVConnectorFactory`'s registry (`distributed/kv_transfer/kv_connector/factory.py:27`; `LMCacheMPConnector` registered at `:171`) — picks *which* `KVConnectorBase_V1` implementation to instantiate. Lazy import: the lmcache package is only imported if this name is selected. |
 | `kv_role` | `kv_both` = this instance both saves and loads. `kv_producer` / `kv_consumer` exist for prefill/decode disaggregation, where one instance only writes and the other only reads. |
-| `kv_connector_extra_config` | Opaque pass-through dict — vLLM never interprets it, the connector class does. For LMCache MP: the ZMQ endpoint of the MP server. **Control-plane only**: KV bytes move via CUDA IPC, which is why `localhost` is structural, not a default (see [control_vs_data_plane.md](control_vs_data_plane.md)). |
+| `kv_connector_extra_config` | Opaque pass-through dict — vLLM never interprets it, the connector class does. For LMCache MP: the ZMQ endpoint of the MP server. **Control-plane only**: KV bytes move via CUDA IPC, which is why `localhost` is structural, not a default (see [1_control_vs_data_plane.md](1_control_vs_data_plane.md)). |
 
 Note what is **absent**: nothing about the model, its layer count, KV heads, dtype, or
 chunk layout. All of that reaches LMCache later, automatically, via `REGISTER_KV_CACHE` at
 worker startup — the config is identical across all four models in
-[kv-cache-shapes.md](kv-cache-shapes.md) for exactly this reason.
+[2_kv-cache-shapes.md](2_kv-cache-shapes.md) for exactly this reason.
 
 ## One name, two instances
 
@@ -163,7 +163,7 @@ sequenceDiagram
 
 Steps 2–5 are scheduler-time (cheap, control only); steps 8 and 10 are worker-time and are
 where the actual bytes move — in the **server** process, via the CUDA IPC handles it got at
-registration ([control_vs_data_plane.md](control_vs_data_plane.md)).
+registration ([1_control_vs_data_plane.md](1_control_vs_data_plane.md)).
 
 ## Why this design is convenient for LMCache
 
@@ -175,7 +175,7 @@ registration ([control_vs_data_plane.md](control_vs_data_plane.md)).
   Neither moves data — the MP server does, which is why profiling must target the server.
 - **Model-agnostic attach**: because the shape/layout travels via `REGISTER_KV_CACHE` (real
   tensors + `engine_group_infos`), one connector config serves GQA, MLA+indexer, and hybrid
-  mamba models alike ([kv-cache-shapes.md](kv-cache-shapes.md)). The only per-model coupling
+  mamba models alike ([2_kv-cache-shapes.md](2_kv-cache-shapes.md)). The only per-model coupling
   is the chunk-size rule enforced at registration (chunk % tokens_per_block == 0) and, for
   hybrid models, `validate_mamba_step_alignment`.
 
@@ -183,6 +183,6 @@ registration ([control_vs_data_plane.md](control_vs_data_plane.md)).
 
 - [code_structure/request_lifecycle.md](code_structure/request_lifecycle.md) — the LMCache
   side of every hook above (5 phases, ZMQ requests, server handlers)
-- [control_vs_data_plane.md](control_vs_data_plane.md) — why ZMQ carries none of the KV
-- [kv-cache-shapes.md](kv-cache-shapes.md) — what the registered KV tensors look like for
+- [1_control_vs_data_plane.md](1_control_vs_data_plane.md) — why ZMQ carries none of the KV
+- [2_kv-cache-shapes.md](2_kv-cache-shapes.md) — what the registered KV tensors look like for
   the four served models

@@ -199,7 +199,7 @@ measurement independently rules out ZMQ as the data path.
 
 ## See also
 
-- [vllm_connector_usage.md](vllm_connector_usage.md) — the vLLM side: how `--kv-transfer-config`
+- [3_vllm_connector_usage.md](3_vllm_connector_usage.md) — the vLLM side: how `--kv-transfer-config`
   becomes two connector instances and which hooks fire when
 - [code_structure/overview.md](code_structure/overview.md) — the three core modules
 - [code_structure/request_lifecycle.md](code_structure/request_lifecycle.md) — the 5 phases of one request
