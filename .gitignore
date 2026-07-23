@@ -1,5 +1,10 @@
 records/
 __pycache__/
+.idea/
+src/vllm
+src/lmcache
+src/logs/
+src/run/
 setup/logs/
 setup/run/
 setup/bench-results/
