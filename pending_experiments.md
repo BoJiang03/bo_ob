@@ -4,40 +4,30 @@ Living list of **suspended experiments** across all parts. Report-window only.
 
 > **铁律:以下全部只在报告窗口跑,绝不在未获明确同意下自动抢卡。** 不打扰他人的 GPU 作业。
 
-Last updated: 2026-07-22. Detailed handoff history in `records/` (gitignored, local-only).
+Last updated: 2026-07-23. Detailed handoff history in `records/` (gitignored, local-only).
 
 ## All suspended items (5)
 
 | # | Experiment | Cards | Time | Runnable now? | Note |
 |---|---|---|---|---|---|
 | **B** | ~~chunk-size 16→256~~ / prefetch-in-flight 8→64 re-test | any **1** | ~30min | ✅ | **chunk-size DONE 2026-07-22** (see below); only in-flight sub-item left |
-| **③** | P2P loading throughput (nsys, Part 3) | 024×1 + 026×1 | ~40min | ✅ | harness ready: `profiling/p2p-nsys.sh` (2026-07-23); details below |
+| **③** | ~~P2P loading throughput (nsys, Part 3)~~ | 024×1 + 026×1 | — | ✅ | **DONE 2026-07-23**: wire 5.5–9.2 GB/s, ~2× NIXL/UCX amplification found; see `10_p2p_nsys_throughput.md` |
 | **D** | DSv4-Flash with / without LMCache | rtx-1 ×2 (TP=2) | — | ❌ | highest academic value (MLA compresses KV) |
 | **A** | ~~real 2-node P2P (Part 2 ③ closeout)~~ | 024×1 + 026×1 | — | ✅ | **DONE 2026-07-23**: 1.44–1.63×, RoCE 5–10 GB/s beat loopback; see `8_p2p_2node_bench.md` |
 | **C** | Kimi-K2.6 recipe | rtx-1 full node ×8 (TP=8) | — | ❌ | long-term |
 
-**Priority: ③ > D > C** (A and B's main gap done). Optional tiny B-followup: in-flight sweep via
-`bench-l2.sh` if we want that dimension too.
-(③ annotations ready, only needs 2 cards; D high value but needs a full 2-card node; C needs a
-whole node.) A's cross-node result (5–10 GB/s real RDMA) sharpens ③'s question: nsys should see
-those load timings same-node.
+**Priority: D > C** (A, B's main gap, and ③ all done; Part 3 fully closed 2026-07-23 —
+④ re-run cross-node-reproduced via `profiling/copy-nsys.sh` and ⑤ written up together in
+`11_h2d_d2h_copy_and_ideas.md`). Optional tiny B-followup: in-flight sweep via `bench-l2.sh`.
+Optional ③-followup (zero GPU): root-cause the ~2× NIXL/UCX amplification
+(`UCX_LOG_LEVEL=debug` re-run, or read the transfer_channel submit path).
 
-## ③ — P2P loading throughput (Part 3)
+## ③ — P2P loading throughput (Part 3) — DONE 2026-07-23
 
-**Goal:** use nsys to measure P2P transfer load throughput between two LMCache instances (range duration → bytes/time).
-
-**Plan changed 2026-07-23: real 2-node (024 GPU0 + 026 GPU1), not same-node** — throughput
-is duration-based (bytes ÷ NVTX range length, each on its own node's clock), so clock skew
-doesn't matter, and real RoCE beats loopback for comparability with A's 5–10 GB/s.
-
-**Harness ready:** `profiling/p2p-nsys.sh` — single orchestrator run from 024 (026 via ssh);
-`check`(read-only audit, PASSED except annotations) → `install`(v0.5.1 + cherry-pick
-`d5bdded7` from [PR #1](https://github.com/BoJiang03/lmcache_test/pull/1) into BOTH venvs;
-`restore` undoes) → `up` → `cap <tag>` → `report <tag>` (auto GB/s estimate) → `down`.
-Port note: 9400 on BOTH nodes is a root docker-proxy → defaults moved to 9402(A)/9401(B).
-
-**Still needed to run:** a free window on 024 GPU0 (its last idle card) + 026 GPU1, and the
-`install` build time (~minutes per node). Everything else is scripted.
+Ran real 2-node (024 GPU0 + 026 GPU1) via `profiling/p2p-nsys.sh`, runs 1–4. Results in
+`10_p2p_nsys_throughput.md`: wire 5.5–9.2 GB/s, goodput 4.0–6.7 GB/s, control plane ~1%,
+**open finding: ~2× transport-layer byte amplification localized to NIXL/UCX** (not
+root-caused; follow-up probes need zero GPU). Fleet torn down, venvs restored to 0.5.1.
 
 ## B — chunk-size DONE (2026-07-22), in-flight sub-item remains
 
