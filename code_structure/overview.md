@@ -150,7 +150,10 @@ does read/write and never cares whether the bytes live in pinned DRAM or a remot
 ## How this connects to earlier parts
 
 - **Part 3**: the profiled H2D/D2H copy happens in ② `lmcache_driven_transfer.py`; the P2P path
-  annotated in PR #1 is ② `p2p_controller.py` + ③ `l2_adapters/p2p_l2_adapter.py`.
+  annotated in PR #1 is ② `p2p_controller.py` + ③ `l2_adapters/p2p_l2_adapter.py`. The measured
+  behaviour of these paths: `../11_h2d_d2h_copy_and_ideas.md` (store submit-bound at 16% duty
+  cycle vs retrieve 88% — the wall-vs-op inversion) and `../10_p2p_nsys_throughput.md` (P2P wire
+  5.5–9.2 GB/s with a ~2× transport-layer amplification).
 - **Part 2**: the L2-support backends all live in ③ `l2_adapters/`.
 - **"handles requests from other MP servers"** = ② `P2PController` ↔ ③ `p2p_l2_adapter`, the
   inter-node path.

@@ -127,9 +127,15 @@ Client files under `lmcache/integration/vllm/`; server under `lmcache/v1/multipr
 - The copy: `lmcache_memcpy_async_d2h` (:570). `finish_write` fires the L1 write-finished event
   that wakes the StoreController to flush L1→L2 — see [controllers.md](controllers.md).
 
-> **H2D vs D2H asymmetry (ties to Part 3):** retrieve copies with `batch_size=max_batch_size`
-> (batched H2D), store copies with `batch_size=1` (per-chunk D2H). Part 3 measured H2D ≈ 32 GB/s
-> vs D2H ≈ 56 GB/s; the batching + reserve/allocate cost on the load path is where that gap lives.
+> **H2D vs D2H asymmetry (ties to Part 3, `11_h2d_d2h_copy_and_ideas.md`):** retrieve copies with
+> `batch_size=max_batch_size` (batched H2D), store with `batch_size=1` (per-chunk D2H). Per-op the
+> DMA favors store (D2H 56 GB/s vs H2D 32), but per wall-clock phase it **inverts**: batched
+> retrieve keeps the copy engine at 88% duty cycle (28.7 GB/s effective), while store's per-chunk
+> submission leaves it idle 84–86% of the time (8.8 GB/s effective) — the reserve/allocate cost
+> (`batched_allocate`, 19–22% of NVTX range time) sits on store's critical path, between
+> submissions. The `batch_size=1` constraint is an implementation limit of the batch splitter
+> (`transfer_kv_per_object_group` whole-batch-skips on a `None` hole, :481-490), not a semantic
+> property of store.
 
 ### 5. Finish
 
