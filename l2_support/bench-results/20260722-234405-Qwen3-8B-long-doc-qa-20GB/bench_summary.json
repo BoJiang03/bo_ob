@@ -1,0 +1,37 @@
+{
+  "config": {
+    "engine_url": "http://localhost:8001",
+    "model": "/dev/shm/models/Qwen3-8B",
+    "workload": "long-doc-qa",
+    "kv_cache_volume_gb": 20.0,
+    "tokens_per_gb_kvcache": 7281,
+    "seed": 42,
+    "output_dir": "/home/bo/onbording/l2_support/bench-results/20260722-234405-Qwen3-8B-long-doc-qa-20GB",
+    "export_csv": true,
+    "export_json": true,
+    "quiet": false,
+    "ignore_eos": false
+  },
+  "results": {
+    "total_requests": 28,
+    "successful_requests": 28,
+    "failed_requests": 0,
+    "elapsed_time": 22.88639036566019,
+    "mean_ttft_ms": 437.14457750320435,
+    "mean_decode_speed": 68.21606492990398,
+    "mean_request_latency_ms": 2315.020442008972,
+    "input_throughput": 12251.211113688956,
+    "output_throughput": 156.59961849543566,
+    "total_input_tokens": 280386,
+    "total_output_tokens": 3584,
+    "p50_ttft_ms": 464.0711545944214,
+    "p90_ttft_ms": 548.465895652771,
+    "p99_ttft_ms": 1606.4715766906745,
+    "p50_decode_speed": 68.40583975418218,
+    "p90_decode_speed": 69.25394865813593,
+    "p99_decode_speed": 74.65778192366203,
+    "p50_request_latency_ms": 2338.7452363967896,
+    "p90_request_latency_ms": 2467.1207427978516,
+    "p99_request_latency_ms": 3490.889999866486
+  }
+}

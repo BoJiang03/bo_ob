@@ -1,0 +1,12 @@
+date        : 2026-07-23T00:00:54+00:00
+adapters    : fs fs_native resp
+num_keys    : 32
+in_flight   : 4
+data_size_kb: 256
+rounds      : 5 (warmup 2)
+lookup_hit  : 1.0
+data_dir    : /data1/bo/l2bench
+-- disk backing /data1/bo/l2bench --
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/nvme0n1   xfs   7.0T  1.4T  5.7T  19% /data1
+lmcache     : 0.5.1

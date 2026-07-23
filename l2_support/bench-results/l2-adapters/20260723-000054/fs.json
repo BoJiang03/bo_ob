@@ -1,0 +1,73 @@
+{
+  "title": "L2 Adapter Benchmark Result",
+  "metrics": {
+    "config": {
+      "l2_adapter_json": "{\"type\":\"fs\",\"base_path\":\"/data1/bo/l2bench/fs\"}",
+      "num_keys": 32,
+      "in_flight": 4,
+      "keys_per_round": 128,
+      "data_size_kb": 256,
+      "data_per_round_mb": 32.0,
+      "measurement_rounds": 5,
+      "warmup_rounds": 2,
+      "lookup_max_hit_rate": 1.0
+    },
+    "op_0": {
+      "operation": "Store",
+      "rounds": 5,
+      "keys_per_round": 128,
+      "total_keys": 640,
+      "total_success": 640,
+      "duration_avg_ms": 46.76,
+      "duration_min_ms": 42.04,
+      "duration_max_ms": 49.83,
+      "duration_p50_ms": 47.38,
+      "duration_p99_ms": 49.83,
+      "duration_std_ms": 2.94,
+      "throughput_avg_mbps": 686.63,
+      "throughput_min_mbps": 642.19,
+      "throughput_max_mbps": 761.11,
+      "ops_per_sec_avg": 2746.52,
+      "latency_per_key_ms": 0.365
+    },
+    "op_1": {
+      "operation": "Lookup",
+      "rounds": 5,
+      "keys_per_round": 128,
+      "total_keys": 640,
+      "total_success": 640,
+      "duration_avg_ms": 6.91,
+      "duration_min_ms": 6.6,
+      "duration_max_ms": 7.44,
+      "duration_p50_ms": 6.85,
+      "duration_p99_ms": 7.44,
+      "duration_std_ms": 0.34,
+      "throughput_avg_mbps": 0.0,
+      "throughput_min_mbps": 0.0,
+      "throughput_max_mbps": 0.0,
+      "ops_per_sec_avg": 18565.71,
+      "latency_per_key_ms": 0.054,
+      "expected_max_hit_rate": 1.0,
+      "expected_hit_count": 457,
+      "actual_hit_rate": 1.0
+    },
+    "op_2": {
+      "operation": "Load",
+      "rounds": 5,
+      "keys_per_round": 128,
+      "total_keys": 640,
+      "total_success": 640,
+      "duration_avg_ms": 25.81,
+      "duration_min_ms": 25.25,
+      "duration_max_ms": 26.2,
+      "duration_p50_ms": 25.85,
+      "duration_p99_ms": 26.2,
+      "duration_std_ms": 0.39,
+      "throughput_avg_mbps": 1240.27,
+      "throughput_min_mbps": 1221.36,
+      "throughput_max_mbps": 1267.45,
+      "ops_per_sec_avg": 4961.09,
+      "latency_per_key_ms": 0.202
+    }
+  }
+}
