@@ -140,6 +140,7 @@ serves most of the over-capacity working set.
 ## See also
 
 - [7_l2_adapter_micro.md](7_l2_adapter_micro.md) — `lmcache bench l2` microbench of fs / fs_native / resp; decomposes these e2e numbers
+- [8_p2p_2node_bench.md](8_p2p_2node_bench.md) — the cross-node P2P arm of the same break-even framework
 - [4_qwen3_bench.md](4_qwen3_bench.md) — the L1-only tiered-sweep method this extends; L1=40 control with the same two-layer reading
 - [1_control_vs_data_plane.md](1_control_vs_data_plane.md) — lookup-starts-prefetch, retrieve-does-H2D: why the L2 load overlaps the client-visible path
 - [2_kv-cache-shapes.md](2_kv-cache-shapes.md) — 144 KB/token / 7281 tok/GB derivation

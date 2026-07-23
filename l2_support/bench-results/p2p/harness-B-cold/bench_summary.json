@@ -1,0 +1,38 @@
+{
+  "config": {
+    "engine_url": "http://172.16.176.28:8002",
+    "model": "/dev/shm/models/Qwen3-8B",
+    "workload": "long-doc-qa",
+    "kv_cache_volume_gb": 10.0,
+    "tokens_per_gb_kvcache": 7281,
+    "seed": 4243,
+    "output_dir": "bench-results/p2p/harness-B-cold",
+    "export_csv": true,
+    "export_json": true,
+    "quiet": false,
+    "ignore_eos": false,
+    "warmup": false
+  },
+  "results": {
+    "total_requests": 7,
+    "successful_requests": 7,
+    "failed_requests": 0,
+    "elapsed_time": 14.00273522734642,
+    "mean_ttft_ms": 367.7947521209717,
+    "mean_decode_speed": 80.4189000219749,
+    "mean_request_latency_ms": 1959.460735321045,
+    "input_throughput": 5005.522054228155,
+    "output_throughput": 63.98749854601056,
+    "total_input_tokens": 70091,
+    "total_output_tokens": 896,
+    "p50_ttft_ms": 323.3053684234619,
+    "p90_ttft_ms": 474.4067192077638,
+    "p99_ttft_ms": 605.0807237625123,
+    "p50_decode_speed": 80.40518862470773,
+    "p90_decode_speed": 80.45049403530744,
+    "p99_decode_speed": 80.50331601839122,
+    "p50_request_latency_ms": 1915.4119491577148,
+    "p90_request_latency_ms": 2065.4478549957275,
+    "p99_request_latency_ms": 2195.0774717330933
+  }
+}

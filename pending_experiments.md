@@ -13,13 +13,14 @@ Last updated: 2026-07-22. Detailed handoff history in `records/` (gitignored, lo
 | **B** | ~~chunk-size 16→256~~ / prefetch-in-flight 8→64 re-test | any **1** | ~30min | ✅ | **chunk-size DONE 2026-07-22** (see below); only in-flight sub-item left |
 | **③** | P2P loading throughput (nsys, Part 3) | same-node **2** | ~40min | ❌ | extra prereq below |
 | **D** | DSv4-Flash with / without LMCache | rtx-1 ×2 (TP=2) | — | ❌ | highest academic value (MLA compresses KV) |
-| **A** | real 2-node P2P (Part 2 ③ closeout) | 024×1 **+** 026×1, **simultaneous** | ~40min | ❌ | single-node 1.30× likely loopback; hardest to schedule |
+| **A** | ~~real 2-node P2P (Part 2 ③ closeout)~~ | 024×1 + 026×1 | — | ✅ | **DONE 2026-07-23**: 1.44–1.63×, RoCE 5–10 GB/s beat loopback; see `8_p2p_2node_bench.md` |
 | **C** | Kimi-K2.6 recipe | rtx-1 full node ×8 (TP=8) | — | ❌ | long-term |
 
-**Priority: ③ > D > A > C** (B's main gap done). Optional tiny B-followup: in-flight sweep via
+**Priority: ③ > D > C** (A and B's main gap done). Optional tiny B-followup: in-flight sweep via
 `bench-l2.sh` if we want that dimension too.
-(③ annotations ready, only needs 2 cards; D high value but needs a full 2-card node; A gated by
-both nodes free at once; C needs a whole node.)
+(③ annotations ready, only needs 2 cards; D high value but needs a full 2-card node; C needs a
+whole node.) A's cross-node result (5–10 GB/s real RDMA) sharpens ③'s question: nsys should see
+those load timings same-node.
 
 ## ③ — P2P loading throughput (Part 3)
 
